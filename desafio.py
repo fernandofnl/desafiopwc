@@ -8,6 +8,7 @@ def funcao_exer1_inverter_ordem_palavras(frase):
     
     return nova_frase
 
+
 # Funcao do exercicio 2:
 def funcao_exer2_remover_duplicadas(frase):
     frase_final = ""
@@ -16,6 +17,33 @@ def funcao_exer2_remover_duplicadas(frase):
             frase_final += cada_letra   
 
     return frase_final
+
+# Funcao do exercicio 3:
+def funcao_exer3_palindromo_longo(palavra):
+    combinacoes_original = set()
+    combinacoes_invertidas = set()
+    
+    for i in range(3, len(palavra) + 1):
+        for j in range(len(palavra) - i + 1):
+            sub = palavra[j:j+i]
+            if len(sub) >= 3:
+                combinacoes_original.add(sub)
+    
+    palavra_invertida = palavra[::-1]
+ 
+    for i in range(3, len(palavra_invertida) + 1):
+        for j in range(len(palavra_invertida) - i + 1):
+            sub = palavra_invertida[j:j+i]
+            if len(sub) >= 3:
+                combinacoes_invertidas.add(sub)
+    
+    substring_mais_longa = ''
+    for combinacao in combinacoes_original:
+        if combinacao in combinacoes_invertidas and len(combinacao) > len(substring_mais_longa):
+            substring_mais_longa = combinacao
+
+    return substring_mais_longa
+
 
 # Funcao do exercicio 4
 def funcao_exer4_colocar_maiuscula(texto):
@@ -87,6 +115,25 @@ print('\nTeste 2:\n')
 print(frase_exer2_exemplo2)
 resposta_exer2_exemplo2 = funcao_exer2_remover_duplicadas(frase_exer2_exemplo2)
 print(resposta_exer2_exemplo2)
+
+
+# Enunciado do desafio 3
+print('\n' + '='*10 + ' DESAFIO 3 ' + '='*10)
+print('Encontrar a substring palindroma mais longa na string.\n')
+
+# Algoritmo do desafio 3 - Exemplo 1
+palavra = "babad"
+print(palavra)
+resposta_exer3_exemplo2 = funcao_exer3_palindromo_longo(palavra)
+print(resposta_exer3_exemplo2)
+
+# Algoritmo do desafio 3 - Exemplo 2
+palavra_exer3_exemplo2 = 'bananada'
+print('\nTeste 2:\n')
+print(palavra_exer3_exemplo2)
+resposta_exer3_exemplo2 = funcao_exer3_palindromo_longo(palavra_exer3_exemplo2)
+print(resposta_exer3_exemplo2)
+
 
 # Enunciado do desafio 4
 print('\n' + '='*10 + ' DESAFIO 4 ' + '='*10)
